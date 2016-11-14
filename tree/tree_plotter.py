@@ -51,8 +51,8 @@ def get_tree_depth(my_tree):
 
 
 def retrieve_tree(i):
-    list_of_trees = [{'no surfing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}},
-                     {'no surfing': {0: 'no', 1: {'flippers': {0: {'head': {0: 'no', 1: 'yes'}}, 1: 'no'}}}}]
+    list_of_trees = [{'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}},
+                     {'no surfacing': {0: 'no', 1: {'flippers': {0: {'head': {0: 'no', 1: 'yes'}}, 1: 'no'}}}}]
     return list_of_trees[i]
 
 

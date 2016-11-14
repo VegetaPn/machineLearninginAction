@@ -87,3 +87,29 @@ def create_tree(data_set, labels):
         sub_labels = labels[:]
         my_tree[best_feat_label][value] = create_tree(split_data_set(data_set, best_feat, value), sub_labels)
     return my_tree
+
+
+def classify(input_tree, feat_labels, test_vec):
+    first_str = input_tree.keys()[0]
+    second_dict = input_tree[first_str]
+    feat_index = feat_labels.index(first_str)
+    for key in second_dict.keys():
+        if test_vec[feat_index] == key:
+            if type(second_dict[key]).__name__ == 'dict':
+                class_label = classify(second_dict[key], feat_labels, test_vec)
+            else:
+                class_label = second_dict[key]
+    return class_label
+
+
+def store_tree(input_tree, filename):
+    import pickle
+    fw = open(filename, 'w')
+    pickle.dump(input_tree, fw)
+    fw.close()
+
+
+def grab_tree(filename):
+    import pickle
+    fr = open(filename)
+    return pickle.load(fr)
